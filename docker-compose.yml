@@ -1,0 +1,21 @@
+version: '3.8'
+
+services:
+  streamlit:
+    build:
+      context: ./streamlit
+    ports:
+      - "8501:8501"
+    healthcheck:
+      test: ["CMD", "curl", "--fail", "http://localhost:8501/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  flask:
+    build:
+      context: ./model
+    ports:
+      - "5000:5000"
+    environment:
+      FLASK_APP: main.py
