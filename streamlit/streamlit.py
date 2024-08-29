@@ -4,7 +4,10 @@ from PIL import Image
 import io
 
 # Define the URL of your Flask API
-url = 'http://host.docker.internal:5000/predict'
+# try:
+#     url = 'http://host.docker.internal:5000/predict'
+# except:
+url = 'http://localhost:5000/predict'
 
 # Create the Streamlit interface
 st.title("Image Prediction App")
